@@ -129,7 +129,7 @@ class VkPlus(object):
         return await asyncio.wait_for(task, None)
 
     async def upload_photo(self, encoded_image) -> Attachment:
-        if not isinstance(db, Puppet):
+        if isinstance(db, peewee_async.Manager):
             status, created = await db.get_or_create(BotStatus, name='main')
 
             if status:
